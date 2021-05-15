@@ -853,7 +853,7 @@ sqlcipher = ["sqlcipher3-binary"]
 
 [[package]]
 name = "sqlalchemy2-stubs"
-version = "0.0.1a8"
+version = "0.0.2a2"
 description = ""
 category = "dev"
 optional = false
@@ -867,8 +867,8 @@ typing-extensions = ">=3.7.4"
 [package.source]
 type = "git"
 url = "https://github.com/sqlalchemy/sqlalchemy2-stubs"
-reference = "b4f80a5e145631f2eb3e584f119cbbd86abeef66"
-resolved_reference = "b4f80a5e145631f2eb3e584f119cbbd86abeef66"
+reference = "e1285079279594336af3ef52f4057753ddc7bdf4"
+resolved_reference = "e1285079279594336af3ef52f4057753ddc7bdf4"
 
 [[package]]
 name = "termcolor"
@@ -986,7 +986,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "db56b3aecb1c88c8b957a9f2a67912da42ce047aed6f6c299e5aa9133a26b5d5"
+content-hash = "ea24fbc0cec6b32bb9854a63c85c78cd0af2189917e70c1462f1bcbdcef9d1d2"
 
 [metadata.files]
 aiodns = [

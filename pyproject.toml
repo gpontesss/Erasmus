@@ -24,7 +24,7 @@ sqlalchemy = {version = "~1.4", extras = ["postgresql_asyncpg"]}
 [tool.poetry.dev-dependencies]
 "discord.py-stubs" = {version = "~1.7.3"}
 sqlalchemy = {version = "~1.4", extras = ["postgresql_asyncpg"]}
-sqlalchemy2-stubs = {git = "https://github.com/sqlalchemy/sqlalchemy2-stubs", rev = "b4f80a5e145631f2eb3e584f119cbbd86abeef66"}
+sqlalchemy2-stubs = {git = "https://github.com/sqlalchemy/sqlalchemy2-stubs", rev = "e1285079279594336af3ef52f4057753ddc7bdf4"}
 black = "^21.5b2"
 coverage = {version = "^5.5", extras = ["toml"]}
 flake8 = "~3.9"
