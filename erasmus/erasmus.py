@@ -50,7 +50,10 @@ class Erasmus(
             paginator=formatting.Paginator(),
             command_attrs={
                 'brief': 'List commands for this bot or get help for commands',
-                'cooldown': commands.Cooldown(5, 30.0, commands.BucketType.channel),
+                'cooldown': commands.CooldownMapping(
+                    commands.Cooldown(5, 30.0),
+                    commands.BucketType.channel,
+                ),
             },
         )
         kwargs['description'] = _description
