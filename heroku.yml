@@ -7,4 +7,7 @@ build:
 release:
   image: worker
   command:
-    - alembic upgrade head
+    - ./envtmpl config-template.toml -o config.toml
+    # weird, and shouldn't be needed, but here we are
+    - pip install mypy_extensions
+    - python -m alembic upgrade head
