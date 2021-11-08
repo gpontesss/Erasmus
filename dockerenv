@@ -1,0 +1,12 @@
+#!/bin/sh
+
+set -o errexit
+
+ENVFILE="$1"
+
+cat "$ENVFILE" | \
+while IFS="=" read -r KEY VALUE; do
+    echo -n "-e $KEY=$VALUE "
+done
+
+#vim:ft=shell

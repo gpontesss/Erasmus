@@ -20,6 +20,7 @@ ujson = "^4.0"
 more-itertools = {version = "~8.8.0"}
 discord-ext-menus = {git = "https://github.com/Rapptz/discord-ext-menus", rev = "6f2b873bf0d28903eb752aa1166b3aac26dc9007"}
 "discord.py" = {git = "https://github.com/Rapptz/discord.py.git"}
+Mako = "^1.1.5"
 
 [tool.poetry.dev-dependencies]
 "discord.py-stubs" = {git = "https://github.com/gpontesss/discord.py-stubs.git"}

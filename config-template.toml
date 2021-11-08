@@ -1,0 +1,8 @@
+[bot]
+bot_name = "erasmus"
+command_prefix = "%"
+discord_api_key = "${DISCORD_API_KEY}"
+db_url = "${DATABASE_URL}"
+
+[bot.services.ApiBible]
+api_key = "${API_BIBLE_KEY}"
