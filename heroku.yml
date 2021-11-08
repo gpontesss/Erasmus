@@ -1,0 +1,10 @@
+setup:
+  addons:
+    - plan: heroku-postgresql:hobby-dev
+build:
+  docker:
+    worker: Dockerfile
+release:
+  image: worker
+  command:
+    - alembic upgrade head

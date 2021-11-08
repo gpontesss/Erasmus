@@ -17,7 +17,7 @@ WORKDIR /src
 RUN apk add --no-cache build-base musl-dev postgresql-dev git libffi-dev
 
 COPY --from=deps /deps/requirements.txt .
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
