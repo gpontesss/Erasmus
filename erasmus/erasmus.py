@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import logging
+import re
 from typing import Any, Final, cast
 
 import discord
@@ -59,6 +60,11 @@ class Erasmus(
         kwargs['description'] = _description
         kwargs['intents'] = discord.Intents(guilds=True, reactions=True, messages=True)
 
+        config["db_url"] = re.sub(
+            r"^postgres://",
+            "postgresql://",
+            config["db_url"],
+        )
         super().__init__(config, *args, **kwargs)
 
         for extension in _extensions:

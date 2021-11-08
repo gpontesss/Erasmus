@@ -1,11 +1,14 @@
 from __future__ import with_statement
-from alembic import context
-from sqlalchemy import engine_from_config, pool
+
+import re
 from logging.config import fileConfig
-from erasmus.db import db
+from pathlib import Path
 
 from botus_receptus.config import load
-from pathlib import Path
+from sqlalchemy import engine_from_config, pool
+
+from alembic import context
+from erasmus.db import db
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
@@ -60,7 +63,7 @@ def run_migrations_online():
         config.get_section(config.config_ini_section),
         prefix='sqlalchemy.',
         poolclass=pool.NullPool,
-        url=bot_config['db_url'],
+        url=re.sub(r"^postgres://", "postgresql://", bot_config["db_url"]),
     )
 
     def process_revision_directives(context, revision, directives):
