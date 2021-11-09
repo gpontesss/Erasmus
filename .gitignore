@@ -13,3 +13,4 @@ config.ini
 config.toml
 *.pyc
 /erasmus.log
+.env

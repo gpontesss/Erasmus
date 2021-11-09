@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import logging
+import re
 from typing import Any, Final, cast
 
 import discord
@@ -50,12 +51,20 @@ class Erasmus(
             paginator=formatting.Paginator(),
             command_attrs={
                 'brief': 'List commands for this bot or get help for commands',
-                'cooldown': commands.Cooldown(5, 30.0, commands.BucketType.channel),
+                'cooldown': commands.CooldownMapping(
+                    commands.Cooldown(5, 30.0),
+                    commands.BucketType.channel,
+                ),
             },
         )
         kwargs['description'] = _description
         kwargs['intents'] = discord.Intents(guilds=True, reactions=True, messages=True)
 
+        config["db_url"] = re.sub(
+            r"^postgres://",
+            "postgresql://",
+            config["db_url"],
+        )
         super().__init__(config, *args, **kwargs)
 
         for extension in _extensions:

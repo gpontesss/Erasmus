@@ -84,7 +84,7 @@ class BibleVersion(Base):
             if guild_pref is not None and guild_pref.bible_version is not None:
                 return guild_pref.bible_version
 
-        return await BibleVersion.get_by_command('esv')
+        return await BibleVersion.get_by_command('bsb')
 
 
 class UserPref(Base):
