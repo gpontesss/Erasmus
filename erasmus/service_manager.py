@@ -20,7 +20,7 @@ _log: Final = logging.getLogger(__name__)
 @dataclass(slots=True)
 class ServiceManager(object):
     service_map: dict[str, Service] = attrib(factory=dict)
-    timeout: float = 10
+    timeout: float = 20
 
     def __contains__(self, key: str, /) -> bool:
         return key in self.service_map
