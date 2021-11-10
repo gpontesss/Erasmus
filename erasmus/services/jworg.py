@@ -100,7 +100,11 @@ class JWOrg(BaseService):
                 version=bible.service_version,
                 book_num=book_num,
                 chap_num=chap_num,
-            )
+            ),
+            # resets User-Agent to make requests faster. it seems that the
+            # website detects programmatic clients and halts their requests on
+            # porpuse.
+            headers={"User-Agent": ""},
         ) as resp:
             # TODO: deal with 404
             soup = BeautifulSoup(await resp.read(), "html.parser")
