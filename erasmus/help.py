@@ -18,7 +18,7 @@ class HelpCommand(_DefaultHelpCommand):
     def _get_command_title(self, command: commands.Command[Context], /) -> str:
         return ', '.join(
             map(
-                lambda s: f'{self.clean_prefix}{s}',
+                lambda s: f'{self.context.clean_prefix}{s}',
                 [command.name] + list(command.aliases),
             )
         )
@@ -44,16 +44,16 @@ class HelpCommand(_DefaultHelpCommand):
             self.paginator.add_line(self._get_command_title(command))
             self.paginator.add_line('    ' + command.short_doc, empty=True)
 
-        self.paginator.add_line(f'{self.clean_prefix}<version>')
+        self.paginator.add_line(f'{self.context.clean_prefix}<version>')
         self.paginator.add_line(
             '    Look up a verse in a specific version (see '
-            f'{self.clean_prefix}versions)',
+            f'{self.context.clean_prefix}versions)',
             empty=True,
         )
-        self.paginator.add_line(f'{self.clean_prefix}s<version>')
+        self.paginator.add_line(f'{self.context.clean_prefix}s<version>')
         self.paginator.add_line(
             '    Search for terms in a specific version (see '
-            f'{self.clean_prefix}versions)',
+            f'{self.context.clean_prefix}versions)',
             empty=True,
         )
 
@@ -61,7 +61,7 @@ class HelpCommand(_DefaultHelpCommand):
         self.paginator.add_line(
             f'''You can type the following for more information on a command:
 
-    {self.clean_prefix}{self.context.invoked_with} <command>'''
+    {self.context.clean_prefix}{self.context.invoked_with} <command>'''
         )
 
         await self.send_pages()
@@ -81,12 +81,16 @@ class HelpCommand(_DefaultHelpCommand):
         names.extend(command.aliases)
 
         for name in names:
-            self.paginator.add_line('    ' + self.clean_prefix + name + ' ' + signature)
+            self.paginator.add_line(
+                '    ' + self.context.clean_prefix + name + ' ' + signature
+            )
 
         if command.help:
             if command.help[0] != '\n':
                 self.paginator.add_line()
-            self.paginator.add_line(command.help.format(prefix=self.clean_prefix))
+            self.paginator.add_line(
+                command.help.format(prefix=self.context.clean_prefix)
+            )
 
     async def command_callback(
         self, ctx: Context, /, *, command: Optional[str] = None
